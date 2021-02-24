@@ -1,35 +1,39 @@
-
 .navbar {
   width: 100%;
-  height: 70px;
+  height: 60px;
   background: #fff;
   display: flex;
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 0 30px;
+  padding: 0 10px;
   position: fixed;
   top: 0;
   z-index: 100;
 }
 .navbar__first {
+  flex: 1;
   display: flex;
   align-items: center;
-  width: 25%;
+  /* width: 25%; */
+  flex-basis: -22%;
 }
 .navbar__first-logo {
-  width: 20%;
+  // width: 20%;
+  margin-right: 10px;
 }
 .navbar__logo {
   font-size: 40px;
   color: #0d8cf1;
 }
 .navbar__first-search {
-  width: 80%;
+  // width: 80%;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .navbar__first-searchbar {
   width: 100%;
-  padding: 15px 45px;
+  padding: 13px 37px;
   border: none;
   background: #f0f2f5;
   border-radius: 30px;
@@ -37,17 +41,19 @@
 }
 .navar__searchIcon {
   position: absolute;
-  left: 20px;
-  top: 13px;
+  left: 9px;
+  top: 10px;
   font-size: 22px;
-  color: silver;
+  color: #5b5b5b;
 }
 
 .navbar__middle {
-  width: 50%;
+  flex: 1;
   display: flex;
   padding: 0 70px;
   justify-content: space-between;
+  flex-wrap: wrap;
+  flex-basis: 19%;
 }
 .navbar__middle-icons {
   font-size: 25px;
@@ -75,9 +81,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .navbar__last {
-  width: 25%;
+  /* width: 25%; */
   display: flex;
   justify-content: center;
+  flex: 1;
 }
 .navbar__last-section {
   margin: 0 15px;

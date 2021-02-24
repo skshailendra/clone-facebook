@@ -8,10 +8,9 @@
 }
 .create__first {
   display: flex;
-  width: 100%;
 }
 .create__first-img {
-  width: 20%;
+  margin-right: 10px;
 }
 .create__first-img span {
   display: inline-block;
@@ -26,7 +25,8 @@
   object-fit: cover;
 }
 .create__first-input {
-  width: 80%;
+  flex: 1;
+  display: flex;
 }
 .create__first-inputs {
   width: 100%;
@@ -38,12 +38,11 @@
 }
 
 .create__second {
-  width: 100%;
   border-top: 1px solid #f0f2f5;
-  margin-top: 12px;
+  margin-top: 1rem;
   padding-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .create__second-icon {
   display: flex;

@@ -24,7 +24,7 @@ const Navbar = () => {
           <input
             type="text"
             className="navbar__first-searchbar"
-            placeholder="Facebook Search"
+            placeholder="Search Facebook"
           />
           <FaSistrix className="navar__searchIcon" />
         </div>
