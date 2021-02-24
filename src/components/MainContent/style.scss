@@ -1,0 +1,18 @@
+.main-content {
+  display: flex;
+  margin-top: 90px;
+  width: 50%;
+  flex-wrap: wrap;
+  //background: grey;
+  flex-basis: 60%;
+  /* min-width: 61%; */
+  justify-content: center;
+  flex-shrink: 1;
+}
+.main-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0px 16%;
+}

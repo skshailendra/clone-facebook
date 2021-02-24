@@ -1,0 +1,50 @@
+.stories {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap ;
+}
+.stories__col {
+  flex: 1;
+}
+.stories__body {
+  height: 198px;
+  padding: 0 10px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.stories__body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.stories__body-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.stories__body-overlay-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 20px;
+  border: 4px solid #0d8cf1;
+}
+.stories__body-overlay-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stories__body-name {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: #fff;
+  font-size: 13px;
+}
