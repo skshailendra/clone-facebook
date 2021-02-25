@@ -61,7 +61,11 @@ const CreatePost = () => {
         </div>
       </div>
 
-      <Modal show={openModal} modalClosed={closeModalHandler}>
+      <Modal
+        type={"Create Post"}
+        show={openModal}
+        modalClosed={closeModalHandler}
+      >
         <PostComponent
           statusText={statusText}
           changeText={onChangeStatus}

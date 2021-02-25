@@ -144,7 +144,11 @@ const ShowFeed = () => {
               </div>
             )
         )}
-      <Modal show={openModal} modalClosed={closeModalHandler}>
+      <Modal
+        type={"Update Post"}
+        show={openModal}
+        modalClosed={closeModalHandler}
+      >
         <UpdatePostComponent
           statusText={statusText}
           changeText={onChangeStatus}

@@ -2,7 +2,7 @@ import React from "react";
 import "./style.scss";
 import Backdrop from "../Backdrop/Backdrop";
 import { FaEllipsisH, FaLock, FaCaretDown } from "react-icons/fa";
-const Modal = ({ show, modalClosed, children }) => {
+const Modal = ({ type, show, modalClosed, children }) => {
   return (
     <>
       <Backdrop show={show} clicked={modalClosed} />
@@ -15,7 +15,7 @@ const Modal = ({ show, modalClosed, children }) => {
       >
         <div className="modal__body">
           <div className="modal__header-container">
-            <h3 className="modal__heading">Create Post</h3>
+            <h3 className="modal__heading">{type}</h3>
             <div className="modal__close" onClick={modalClosed}>
               <span>X</span>
             </div>

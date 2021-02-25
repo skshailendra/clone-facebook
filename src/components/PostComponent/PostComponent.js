@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./style.scss";
-import { FaEllipsisH, FaLock, FaCaretDown } from "react-icons/fa";
+import { FaFileImage } from "react-icons/fa";
 import useStorage from "../../hooks/useStorage";
 import { storage, projectFirestore, timestamp } from "../../firebase";
 const types = ["image/png", "image/jpeg", "image/jpg"];
@@ -77,29 +77,45 @@ const PostComponent = ({
 
   return (
     <div className="post__container">
-      <div className="form_input-text">
+      <div className="post__form_input-text">
         <input
           type="text"
-          className="create__first-inputs"
+          className="post__container-inputs"
           placeholder="What's are your mind, Ram? "
           value={statusText}
           name="statusText"
           onChange={(e) => changeText(e)}
         />
       </div>
-      <input
-        type="file"
-        ref={uploadImageRef}
-        style={{ display: "none" }}
-        onChange={(e) => fileSelectorHandler(e)}
-      />
-      <button onClick={() => uploadImageRef.current.click()}>
-        Upload Image Icon
-      </button>
-      {imageUrl && (
-        <img src={imageUrl} width="300" height="300" alt="User-pic" />
-      )}
-      <button onClick={(e) => createNewPostHandler(e)}>Post</button>
+
+      <div className="post__container-uploadImage">
+        {imageUrl && (
+          <div className="post__container-image">
+            <img src={imageUrl} width="300" height="300" alt="User-pic" />
+          </div>
+        )}
+        <div className="post__container-uploadSection">
+          <input
+            type="file"
+            ref={uploadImageRef}
+            style={{ display: "none" }}
+            onChange={(e) => fileSelectorHandler(e)}
+          />
+          <span>Add to your post</span>
+          <div
+            className="post__container-uploadSection1"
+            onClick={() => uploadImageRef.current.click()}
+          >
+            <FaFileImage />
+          </div>
+        </div>
+      </div>
+      <div
+        className="post__container-postButton"
+        onClick={(e) => createNewPostHandler(e)}
+      >
+        <span>Post</span>
+      </div>
     </div>
   );
 };
