@@ -172,7 +172,7 @@ const ShowFeed = () => {
         <UpdatePostComponent
           statusText={statusText}
           changeText={onChangeStatus}
-          imageUrl={url}
+          editedurl={url}
           id={id}
           resetStatusText={resetStatusText}
         />

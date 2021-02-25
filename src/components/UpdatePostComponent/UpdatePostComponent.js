@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./style.scss";
 import { FaFileImage } from "react-icons/fa";
 import { storage, projectFirestore, timestamp } from "../../firebase";
@@ -7,7 +7,7 @@ const userId = "shailendra101";
 const UpdatePostComponent = ({
   statusText,
   changeText,
-  imageUrl,
+  editedurl,
   id,
   resetStatusText,
 }) => {
@@ -16,17 +16,28 @@ const UpdatePostComponent = ({
   const [fileUpload, setFileUpload] = useState(null);
   const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   //const { progress, url } = useStorage(fileUpload);
-
+  useEffect(() => {
+    setImageUrl(editedurl);
+  }, [editedurl]);
   const fileSelectorHandler = (e) => {
     let fileSelected = e.target.files[0];
-    if (fileSelected && types.includes(fileSelected.type)) {
-      console.log(fileSelected);
-      setFileUpload(e.target.files[0]);
-    } else {
-      setFileUpload(null);
-    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImageUrl(reader.result);
+      }
+    };
+    setFileUpload(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
   };
+
+  const clearFileUpload = () => {
+    setImageUrl("");
+    setFileUpload(null);
+  };
+
   const updatePostHandler = (e) => {
     const collectionRef = projectFirestore.collection("data");
     if (fileUpload && types.includes(fileUpload.type)) {
@@ -60,7 +71,6 @@ const UpdatePostComponent = ({
     } else {
       (async () => {
         const url = imageUrl;
-        debugger;
         const createdAt = new Date().getTime();
         const uniqueId = `${createdAt}${userId}`;
         await collectionRef.doc(id).set({
@@ -74,7 +84,7 @@ const UpdatePostComponent = ({
       })();
     }
   };
-
+  debugger;
   return (
     <div className="post__container-edit">
       <div className="post__form_input-text1">
@@ -96,6 +106,9 @@ const UpdatePostComponent = ({
               className="post__container-image-img1"
               alt="User-pic"
             />
+            <div className="image__close" onClick={() => clearFileUpload()}>
+              <span>X</span>
+            </div>
           </div>
         )}
         <div className="post__container-uploadSection">
