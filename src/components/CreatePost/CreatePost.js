@@ -42,18 +42,18 @@ const CreatePost = () => {
         </div>
       </div>
       <div className="create__second">
-        <span className="create__second-icon">
+        <div className="create__second-icon">
           <FaVideo className="redColor" />{" "}
-          <span className="text">Live Video</span>
-        </span>
-        <span className="create__second-icon">
+          <span className="create__social">Live Video</span>
+        </div>
+        <div className="create__second-icon">
           <FaRegFileImage className="greenColor" />{" "}
-          <span className="text">Photo / Video</span>
-        </span>
-        <span className="create__second-icon">
+          <span className="create__social">Photo / Video</span>
+        </div>
+        <div className="create__second-icon">
           <FaRegGrinAlt className="orangeColor" />{" "}
-          <span className="text">Feeling</span>
-        </span>
+          <span className="create__social">Feeling</span>
+        </div>
       </div>
       {/* <input
         type="file"
