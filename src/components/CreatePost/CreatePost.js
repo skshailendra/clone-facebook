@@ -69,7 +69,6 @@ const CreatePost = () => {
         <PostComponent
           statusText={statusText}
           changeText={onChangeStatus}
-          imageUrl={""}
           resetStatusText={resetStatusText}
         />
       </Modal>

@@ -4,7 +4,11 @@
 }
 .post__form_input-text {
   width: 100%;
-  height: 9rem;
+  height: 8rem;
+}
+.post__form_input-text-image {
+  width: 100%;
+  height: 5rem;
 }
 .post__container-inputs {
   font-size: 1.5rem;
@@ -17,6 +21,8 @@
 }
 .post__container-uploadImage {
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 }
 .post__container-uploadSection {
   border-top-right-radius: 8px;
@@ -46,4 +52,30 @@
   margin-top: 1rem;
   font-weight: 600;
   cursor: pointer;
+}
+.image__close {
+  height: 35px;
+  width: 35px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  font-size: 22px;
+  position: absolute;
+  right: 11px;
+  top: 10px;
+}
+.image__close:active {
+  transform: scale(1.09);
+}
+.post__container-image {
+  position: relative;
+  width: 100%;
+  img {
+    width: 100%;
+  }
 }

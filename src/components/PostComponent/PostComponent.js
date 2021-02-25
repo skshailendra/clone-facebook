@@ -5,27 +5,31 @@ import useStorage from "../../hooks/useStorage";
 import { storage, projectFirestore, timestamp } from "../../firebase";
 const types = ["image/png", "image/jpeg", "image/jpg"];
 const userId = "shailendra101";
-const PostComponent = ({
-  statusText,
-  changeText,
-  imageUrl,
-  resetStatusText,
-}) => {
+const PostComponent = ({ statusText, changeText, resetStatusText }) => {
   let uploadImageRef = useRef();
   const [progress, setProgress] = useState(0);
   const [fileUpload, setFileUpload] = useState(null);
   const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   //const { progress, url } = useStorage(fileUpload);
 
   const fileSelectorHandler = (e) => {
     let fileSelected = e.target.files[0];
-    if (fileSelected && types.includes(fileSelected.type)) {
-      console.log(fileSelected);
-      setFileUpload(e.target.files[0]);
-    } else {
-      setFileUpload(null);
-    }
+
+    console.log(fileSelected);
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImageUrl(reader.result);
+      }
+    };
+    setFileUpload(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  const clearFileUpload = () => {
+    setImageUrl("");
+    setFileUpload(null);
   };
   const createNewPostHandler = (e) => {
     const collectionRef = projectFirestore.collection("data");
@@ -62,7 +66,6 @@ const PostComponent = ({
         const url = "";
         const createdAt = new Date().getTime();
         const uniqueId = `${createdAt}${userId}`;
-        debugger;
         await collectionRef.add({
           statusText,
           userId,
@@ -74,10 +77,13 @@ const PostComponent = ({
       })();
     }
   };
-
   return (
     <div className="post__container">
-      <div className="post__form_input-text">
+      <div
+        className={` ${
+          imageUrl ? "post__form_input-text-image" : "post__form_input-text"
+        }`}
+      >
         <input
           type="text"
           className="post__container-inputs"
@@ -90,15 +96,20 @@ const PostComponent = ({
 
       <div className="post__container-uploadImage">
         {imageUrl && (
-          <div className="post__container-image">
-            <img src={imageUrl} width="300" height="300" alt="User-pic" />
-          </div>
+          <>
+            <div className="post__container-image">
+              <img src={imageUrl} width="300" height="300" alt="User-pic" />
+              <div className="image__close" onClick={() => clearFileUpload()}>
+                <span>X</span>
+              </div>
+            </div>
+          </>
         )}
         <div className="post__container-uploadSection">
           <input
             type="file"
-            ref={uploadImageRef}
             style={{ display: "none" }}
+            ref={uploadImageRef}
             onChange={(e) => fileSelectorHandler(e)}
           />
           <span>Add to your post</span>
