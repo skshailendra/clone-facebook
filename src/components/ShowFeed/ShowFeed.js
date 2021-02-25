@@ -66,14 +66,12 @@ const ShowFeed = () => {
     })();
   };
   useEffect(() => {
-    if (docs && docs.length) {
-      setFeed(
-        docs.map((doc) => ({
-          ...doc,
-          id: doc.id,
-        }))
-      );
-    }
+    setFeed(
+      docs.map((doc) => ({
+        ...doc,
+        id: doc.id,
+      }))
+    );
   }, [docs]);
   console.log(feed);
   return (
