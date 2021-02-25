@@ -1,39 +1,30 @@
 import React, { useState, useRef } from "react";
 import "./style.scss";
 import { FaVideo, FaRegFileImage, FaRegGrinAlt } from "react-icons/fa";
-import axios from "axios";
 import { storage } from "../../firebase";
 import useStorage from "../../hooks/useStorage";
 import Modal from "../../ui/Modal/Modal";
-
-const types = ["image/png", "image/jpeg", "image/jpg"];
+import PostComponent from "../PostComponent/PostComponent";
 
 const CreatePost = () => {
-  const [fileUpload, setFileUpload] = useState(null);
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const { progress, url } = useStorage(fileUpload);
+  // const [uploadedImage, setUploadedImage] = useState(null);
+  // const { progress, url } = useStorage(fileUpload);
   const [openModal, setOpenModal] = useState(false);
+  const [statusText, setStatusText] = useState("");
 
-  let uploadImageRef = useRef();
-  const fileSelectorHandler = (e) => {
-    let fileSelected = e.target.files[0];
-    if (fileSelected && types.includes(fileSelected.type)) {
-      setFileUpload(e.target.files[0]);
-    } else {
-      setFileUpload(null);
-    }
-  };
-  const createNewPostHandler = (e) => {
-    console.log(fileUpload);
-    if (!fileUpload) {
-      return false;
-    }
-  };
   const closeModalHandler = () => {
     setOpenModal(false);
   };
   const openModalHandler = () => {
     setOpenModal(true);
+  };
+  const onChangeStatus = (e) => {
+    console.log(e.target.value);
+    setStatusText(e.target.value);
+  };
+  const resetStatusText = () => {
+    setStatusText("");
+    closeModalHandler();
   };
   return (
     <div className="create">
@@ -48,7 +39,10 @@ const CreatePost = () => {
             type="text"
             className="create__first-inputs"
             placeholder="What's are your mind, Ram? "
-            onClick={() => openModalHandler()}
+            value={statusText}
+            name="statusText"
+            onChange={(e) => onChangeStatus(e)}
+            onFocus={() => openModalHandler()}
           />
         </div>
       </div>
@@ -66,20 +60,14 @@ const CreatePost = () => {
           <span className="create__social">Feeling</span>
         </div>
       </div>
-      {/* <input
-        type="file"
-        ref={uploadImageRef}
-        style={{ display: "none" }}
-        onChange={(e) => fileSelectorHandler(e)}
-      />
-      <button onClick={() => uploadImageRef.current.click()}>
-        Upload Image Icon
-      </button>
-      <img src={uploadedImage} width="300" height="300" alt="User-pic" />
-      <button onClick={(e) => createNewPostHandler(e)}>Upload</button> */}
 
       <Modal show={openModal} modalClosed={closeModalHandler}>
-        <div className="hello">Hellow</div>
+        <PostComponent
+          statusText={statusText}
+          changeText={onChangeStatus}
+          imageUrl={""}
+          resetStatusText={resetStatusText}
+        />
       </Modal>
     </div>
   );
