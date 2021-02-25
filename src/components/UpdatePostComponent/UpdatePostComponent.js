@@ -5,10 +5,11 @@ import useStorage from "../../hooks/useStorage";
 import { storage, projectFirestore, timestamp } from "../../firebase";
 const types = ["image/png", "image/jpeg", "image/jpg"];
 const userId = "shailendra101";
-const PostComponent = ({
+const UpdatePostComponent = ({
   statusText,
   changeText,
   imageUrl,
+  id,
   resetStatusText,
 }) => {
   let uploadImageRef = useRef();
@@ -27,7 +28,7 @@ const PostComponent = ({
       setFileUpload(null);
     }
   };
-  const createNewPostHandler = (e) => {
+  const updatePostHandler = (e) => {
     const collectionRef = projectFirestore.collection("data");
     if (fileUpload && types.includes(fileUpload.type)) {
       const uploadTask = storage.ref(`images/${fileUpload.name}`);
@@ -46,7 +47,7 @@ const PostComponent = ({
           const url = await uploadTask.getDownloadURL();
           const createdAt = timestamp();
           const uniqueId = `${createdAt.toString()}${userId}`;
-          await collectionRef.add({
+          await collectionRef.doc(id).set({
             statusText,
             userId,
             uniqueId,
@@ -62,8 +63,7 @@ const PostComponent = ({
         const url = "";
         const createdAt = new Date().getTime();
         const uniqueId = `${createdAt}${userId}`;
-        debugger;
-        await collectionRef.add({
+        await collectionRef.doc(id).set({
           statusText,
           userId,
           uniqueId,
@@ -99,9 +99,9 @@ const PostComponent = ({
       {imageUrl && (
         <img src={imageUrl} width="300" height="300" alt="User-pic" />
       )}
-      <button onClick={(e) => createNewPostHandler(e)}>Post</button>
+      <button onClick={(e) => updatePostHandler(e)}>Post</button>
     </div>
   );
 };
 
-export default PostComponent;
+export default UpdatePostComponent;
