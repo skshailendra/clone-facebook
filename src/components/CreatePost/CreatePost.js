@@ -4,12 +4,16 @@ import { FaVideo, FaRegFileImage, FaRegGrinAlt } from "react-icons/fa";
 import axios from "axios";
 import { storage } from "../../firebase";
 import useStorage from "../../hooks/useStorage";
+import Modal from "../../ui/Modal/Modal";
+
 const types = ["image/png", "image/jpeg", "image/jpg"];
 
 const CreatePost = () => {
   const [fileUpload, setFileUpload] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const { progress, url } = useStorage(fileUpload);
+  const [openModal, setOpenModal] = useState(false);
+
   let uploadImageRef = useRef();
   const fileSelectorHandler = (e) => {
     let fileSelected = e.target.files[0];
@@ -25,6 +29,12 @@ const CreatePost = () => {
       return false;
     }
   };
+  const closeModalHandler = () => {
+    setOpenModal(false);
+  };
+  const openModalHandler = () => {
+    setOpenModal(true);
+  };
   return (
     <div className="create">
       <div className="create__first">
@@ -37,7 +47,8 @@ const CreatePost = () => {
           <input
             type="text"
             className="create__first-inputs"
-            placeholder="Shakil what are your mind? "
+            placeholder="What's are your mind, Ram? "
+            onClick={() => openModalHandler()}
           />
         </div>
       </div>
@@ -66,6 +77,10 @@ const CreatePost = () => {
       </button>
       <img src={uploadedImage} width="300" height="300" alt="User-pic" />
       <button onClick={(e) => createNewPostHandler(e)}>Upload</button> */}
+
+      <Modal show={openModal} modalClosed={closeModalHandler}>
+        <div className="hello">Hellow</div>
+      </Modal>
     </div>
   );
 };
