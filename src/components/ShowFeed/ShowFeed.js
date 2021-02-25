@@ -21,9 +21,8 @@ const ShowFeed = () => {
   const [statusText, setStatusText] = useState("");
   const [url, setUrl] = useState("");
   const [id, setId] = useState("");
-  debugger;
+
   const closeMenuHandler = (idx) => {
-    debugger;
     let tempfeed = [...feed];
     tempfeed[idx].openMenu = false;
     setFeed(tempfeed);
@@ -148,6 +147,7 @@ const ShowFeed = () => {
         type={"Update Post"}
         show={openModal}
         modalClosed={closeModalHandler}
+        backdropdisabled={true}
       >
         <UpdatePostComponent
           statusText={statusText}

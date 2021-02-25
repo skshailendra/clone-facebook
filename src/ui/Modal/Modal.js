@@ -2,10 +2,10 @@ import React from "react";
 import "./style.scss";
 import Backdrop from "../Backdrop/Backdrop";
 import { FaEllipsisH, FaLock, FaCaretDown } from "react-icons/fa";
-const Modal = ({ type, show, modalClosed, children }) => {
+const Modal = ({ type, show, modalClosed, children, backdropdisabled }) => {
   return (
     <>
-      <Backdrop show={show} clicked={modalClosed} />
+      <Backdrop show={show} clicked={modalClosed} disabled={backdropdisabled} />
       <div
         className="modal"
         style={{
