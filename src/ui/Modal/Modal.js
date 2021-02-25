@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import Backdrop from "../Backdrop/Backdrop";
-import { FaEllipsisH, FaLock, FaCaretDown } from "react-icons/fa";
+import { FaLock, FaCaretDown } from "react-icons/fa";
 const Modal = ({ type, show, modalClosed, children, backdropdisabled }) => {
   return (
     <>

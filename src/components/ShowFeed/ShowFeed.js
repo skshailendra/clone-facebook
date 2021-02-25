@@ -5,6 +5,10 @@ import {
   FaRegCommentAlt,
   FaShareAlt,
   FaEllipsisH,
+  FaPen,
+  FaBookmark,
+  FaLock,
+  FaArchive,
 } from "react-icons/fa";
 import axios from "axios";
 import useFirestore from "../../hooks/useFirestore";
@@ -28,7 +32,6 @@ const ShowFeed = () => {
     setFeed(tempfeed);
   };
   const toggleMenuHandler = (post, idx) => {
-    console.log(post, idx);
     let tempfeed = [...feed];
     tempfeed[idx].openMenu = !tempfeed[idx].openMenu;
     setFeed(tempfeed);
@@ -51,14 +54,12 @@ const ShowFeed = () => {
     setStatusText(e.target.value);
   };
   const onEditPost = (post) => {
-    console.log(post);
     setStatusText(post.statusText);
     setUrl(post.url);
     setId(post.id);
     openModalHandler();
   };
   const onDeletePost = (post) => {
-    console.log(post);
     const collectionRef = projectFirestore.collection("data");
     (async () => {
       await collectionRef.doc(post.id).delete();
@@ -99,18 +100,37 @@ const ShowFeed = () => {
                   <MenuOption
                     show={post.openMenu}
                     menuClosed={closeMenuHandler}
+                    idx={idx}
                   >
+                    <div className="menuoption_edit">
+                      <span>
+                        <FaBookmark />
+                      </span>
+                      Save Post
+                    </div>
                     <div
                       className="menuoption_edit"
                       onClick={() => onEditPost(post, idx)}
                     >
+                      <span>
+                        <FaPen />
+                      </span>
                       Edit Post
                     </div>
                     <div
                       className="menuoption_delete"
                       onClick={() => onDeletePost(post, idx)}
                     >
+                      <span>
+                        <FaArchive />
+                      </span>
                       Delete Post
+                    </div>
+                    <div className="menuoption_edit">
+                      <span>
+                        <FaLock />
+                      </span>
+                      Edit Audience
                     </div>
                   </MenuOption>
                 </div>

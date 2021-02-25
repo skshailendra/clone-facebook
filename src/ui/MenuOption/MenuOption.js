@@ -1,11 +1,10 @@
 import React from "react";
 import "./style.scss";
 import MenuBackdrop from "../MenuBackdrop/MenuBackdrop";
-import { FaEllipsisH, FaLock, FaCaretDown } from "react-icons/fa";
-const MenuOption = ({ show, menuClosed, children }) => {
+const MenuOption = ({ show, menuClosed, children, idx }) => {
   return (
     <>
-      <MenuBackdrop show={show} clicked={menuClosed} />
+      <MenuBackdrop show={show} clicked={menuClosed} idx={idx} />
       <div
         className="menuoption"
         style={{

@@ -1,10 +1,19 @@
 .menuoption {
   position: absolute;
-  right: 0;
+  right: 18px;
   top: 39px;
-  min-height: 52px;
-  width: 114px;
+  min-height: 200px;
+  z-index: 20;
+  min-width: 300px;
   padding: 10px;
   background: #fff;
   border-radius: 10px;
+  max-height: 300.625px;
+  box-shadow: 0 12px 28px 0 #00000033, 0 2px 4px 0 #0000001a,
+    inset 0 0 0 1px #ffffff80;
+}
+.menuoption__children {
+  font-size: 1rem;
+  color: #65676b;
+  font-weight: 600;
 }

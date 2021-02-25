@@ -92,3 +92,21 @@
   margin-bottom: 16px;
   border-radius: 10px;
 }
+.menuoption_edit,
+.menuoption_delete {
+  display: flex;
+  cursor: pointer;
+  padding: 10px 0px;
+  border-radius: 10px;
+  span {
+    margin-right: 8px;
+    margin-left: 10px;
+  }
+}
+.menuoption_edit:hover {
+  background: #f4f4f4cc;
+}
+
+.menuoption_delete:hover {
+  background: #f4f4f4cc;
+}
