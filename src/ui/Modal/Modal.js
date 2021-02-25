@@ -26,7 +26,7 @@ const Modal = ({ type, show, modalClosed, children, backdropdisabled }) => {
                 <img src="/images/profile-pic.jpg" alt="user" />
               </div>
               <div className="modal__show-header-name">
-                {"Ram Seeta"}
+                {"Ram Shyaam"}
                 <div className="modal__show-header-visibility-container">
                   <FaLock />
                   <span className="modal__show-header-visibility">Only me</span>

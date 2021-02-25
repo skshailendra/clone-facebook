@@ -51,6 +51,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__last">
+        <div className="show__navbar-header-img">
+          <img src="/images/profile-pic.jpg" alt="user" />
+        </div>
+        <div className="show__navbar-header-name">{"Ram Shyaam"}</div>
         <span className="navbar__last-section">
           <FaPlus />
         </span>

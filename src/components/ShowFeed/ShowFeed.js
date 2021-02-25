@@ -106,7 +106,7 @@ const ShowFeed = () => {
                     <img src="/images/profile-pic.jpg" alt="user" />
                   </div>
                   <div className="show__header-name">
-                    {"Ram Seeta"}
+                    {"Ram Shyaam"}
                     <div className="date">{formatDateTime(post.createdAt)}</div>
                   </div>
                   <div
