@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style.scss";
+import { FaVideo, FaSistrix, FaEllipsisH } from "react-icons/fa";
 const RightSideNavigation = () => {
   const [state, setState] = useState([
     { id: 1, image: "/images/1.jpg", name: "Ram" },
@@ -12,7 +13,16 @@ const RightSideNavigation = () => {
   return (
     <div className="rightsidebar">
       <div className="contact-heading">
-        <span>Contacts</span>
+        <span className="contacts">Contacts</span>
+        <span className="videomsg">
+          <FaVideo />
+        </span>
+        <span className="sistrix">
+          <FaSistrix />
+        </span>
+        <span className="ellipsis">
+          <FaEllipsisH />
+        </span>
       </div>
       <div>
         {state.map((info) => (

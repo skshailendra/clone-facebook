@@ -1,9 +1,8 @@
-
 .rightsidebar {
   width: 20%;
   position: fixed;
   top: 90px;
-  right:0;
+  right: 0;
 }
 .rightsidebar__list {
   display: flex;
@@ -25,6 +24,20 @@
 .rightsidebar__list-name {
   margin-left: 12px;
 }
-.contact-heading{
+.contact-heading {
   padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  color: #65676b;
+  font-weight: 600;
+  font-size: 1.04rem;
+  line-height: 1.3333;
+}
+.contact-heading .contacts {
+  margin-right: auto;
+}
+.sistrix {
+  margin: 0 10px;
+}
+.ellipsis {
 }

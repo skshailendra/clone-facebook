@@ -1,9 +1,8 @@
-
 .sidebar {
   width: 25%;
   position: fixed;
-  top: 90px;
-  left:0;
+  top: 72px;
+  left: 0;
 }
 .sidebar__list {
   display: flex;
@@ -14,8 +13,19 @@
 .sidebar__list-img {
   width: 35px;
   height: 35px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sidebar__list-profile-img {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
+}
+.sidebar__list-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .sidebar__list-img img {
   width: 100%;
