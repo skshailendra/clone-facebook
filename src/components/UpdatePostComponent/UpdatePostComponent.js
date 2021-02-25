@@ -84,7 +84,7 @@ const UpdatePostComponent = ({
       })();
     }
   };
-  debugger;
+
   return (
     <div className="post__container-edit">
       <div className="post__form_input-text1">
