@@ -54,14 +54,19 @@
   justify-content: space-between;
   flex-wrap: wrap;
   flex-basis: 19%;
+  cursor: pointer;
 }
 .navbar__middle-icons {
   font-size: 25px;
   color: #606770;
-  cursor: pointer;
+}
+.navbar__middle-icons:hover {
+  background-color: #606770;
+}
+.navbar__active {
+  color: #0d8cf1;
 }
 .middleIcon {
-  display: inline-block;
   position: relative;
 }
 
@@ -72,7 +77,7 @@
   height: 20px;
   background: #f1327b;
   top: -13px;
-  left: 10px;
+  left: 16px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;

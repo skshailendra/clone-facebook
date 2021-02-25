@@ -3,7 +3,7 @@ import {
   FaFacebook,
   FaSistrix,
   FaHome,
-  FaFontAwesomeFlag,
+  FaUserFriends,
   FaVideo,
   FaUsers,
   FaGamepad,
@@ -30,25 +30,25 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__middle">
-        <span className="middleIcon">
-          <FaHome className="navbar__middle-icons" />
-        </span>
-        <span className="middleIcon">
-          <FaFontAwesomeFlag className="navbar__middle-icons" />
-          <span className="navbar__notify">3</span>
-        </span>
-        <span className="middleIcon">
+        <div className="middleIcon navbar__active-div">
+          <FaHome className="navbar__middle-icons navbar__active" />
+        </div>
+        <div className="middleIcon">
+          <FaUserFriends className="navbar__middle-icons" />
+          <div className="navbar__notify">3</div>
+        </div>
+        <div className="middleIcon">
           <FaVideo className="navbar__middle-icons" />
-          <span className="navbar__notify">10</span>
-        </span>
-        <span className="middleIcon">
+          <div className="navbar__notify">10</div>
+        </div>
+        <div className="middleIcon">
           <FaUsers className="navbar__middle-icons" />
-          <span className="navbar__notify">22</span>
-        </span>
-        <span className="middleIcon">
+          <div className="navbar__notify">22</div>
+        </div>
+        <div className="middleIcon">
           <FaGamepad className="navbar__middle-icons" />
-          <span className="navbar__notify">5</span>
-        </span>
+          <div className="navbar__notify">5</div>
+        </div>
       </div>
       <div className="navbar__last">
         <span className="navbar__last-section">

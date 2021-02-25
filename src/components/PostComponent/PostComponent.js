@@ -16,8 +16,6 @@ const PostComponent = ({ statusText, changeText, resetStatusText }) => {
 
   const fileSelectorHandler = (e) => {
     let fileSelected = e.target.files[0];
-
-    console.log(fileSelected);
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -48,7 +46,7 @@ const PostComponent = ({ statusText, changeText, resetStatusText }) => {
         },
         async () => {
           const url = await uploadTask.getDownloadURL();
-          const createdAt = timestamp();
+          const createdAt = new Date().getTime();
           const uniqueId = `${createdAt.toString()}${userId}`;
           await collectionRef.add({
             statusText,
@@ -58,6 +56,7 @@ const PostComponent = ({ statusText, changeText, resetStatusText }) => {
             createdAt,
           });
           setUrl(url);
+          clearFileUpload();
           resetStatusText();
         }
       );
@@ -73,6 +72,7 @@ const PostComponent = ({ statusText, changeText, resetStatusText }) => {
           url,
           createdAt,
         });
+        clearFileUpload();
         resetStatusText();
       })();
     }

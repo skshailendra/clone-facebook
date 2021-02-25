@@ -17,6 +17,28 @@ import Modal from "../../ui/Modal/Modal";
 import UpdatePostComponent from "../UpdatePostComponent/UpdatePostComponent";
 import { projectFirestore } from "../../firebase";
 const types = ["image/png", "image/jpeg", "image/jpg"];
+
+const formatDateTime = (milliSec) => {
+  let lastUpdatedTime = "";
+  let extracttime = new Date(milliSec);
+  let hr =
+    new Date().getHours() - extracttime.getHours() >= 0
+      ? new Date().getHours() - extracttime.getHours()
+      : 23 - Math.abs(new Date().getHours() - extracttime.getHours());
+  let min =
+    new Date().getMinutes() - extracttime.getMinutes() >= 0
+      ? Math.abs(new Date().getMinutes() - extracttime.getMinutes())
+      : 60 - extracttime.getMinutes() + new Date().getMinutes();
+  let sec = Math.abs(new Date().getSeconds() - extracttime.getSeconds());
+  lastUpdatedTime = hr > 0 ? hr + " hr" : "";
+  lastUpdatedTime += hr === 0 && min > 0 ? min + " min" : "";
+  lastUpdatedTime += hr === 0 && min === 0 ? sec + " sec" : "";
+  if (lastUpdatedTime === "0 sec".trim()) {
+    lastUpdatedTime = "Just now";
+  }
+  return lastUpdatedTime;
+};
+
 const ShowFeed = () => {
   const { docs } = useFirestore("data");
   const [feed, setFeed] = useState([]);
@@ -50,7 +72,6 @@ const ShowFeed = () => {
     closeModalHandler();
   };
   const onChangeStatus = (e) => {
-    console.log(e.target.value);
     setStatusText(e.target.value);
   };
   const onEditPost = (post) => {
@@ -73,7 +94,6 @@ const ShowFeed = () => {
       }))
     );
   }, [docs]);
-  console.log(feed);
   return (
     <div className="show">
       {feed &&
@@ -87,7 +107,7 @@ const ShowFeed = () => {
                   </div>
                   <div className="show__header-name">
                     {"Ram Seeta"}
-                    <div className="date">10h</div>
+                    <div className="date">{formatDateTime(post.createdAt)}</div>
                   </div>
                   <div
                     className="show__edit"
