@@ -100,7 +100,7 @@ const ShowFeed = () => {
         feed.map(
           (post, idx) =>
             (post.statusText || post.url) && (
-              <div key={post.id} className="empty">
+              <div key={post.id} className="show-container">
                 <div className="show__header">
                   <div className="show__header-img">
                     <img src="/images/profile-pic.jpg" alt="user" />
