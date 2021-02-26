@@ -10,9 +10,10 @@
   top: 10%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-  min-height: 400px;
   border-radius: 10px;
+  height: auto;
 }
+
 .modal__header-container {
   display: flex;
   width: 100%;
@@ -51,6 +52,9 @@
 }
 .modal__children {
   width: 100%;
+  height: auto;
+  max-height: 500px;
+  overflow: auto;
 }
 .modal__show-header {
   display: flex;

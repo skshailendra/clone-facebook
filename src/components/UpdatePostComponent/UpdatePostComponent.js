@@ -55,7 +55,7 @@ const UpdatePostComponent = ({
         },
         async () => {
           const url = await uploadTask.getDownloadURL();
-          const createdAt = timestamp();
+          const createdAt = new Date().getTime();
           const uniqueId = `${createdAt.toString()}${userId}`;
           await collectionRef.doc(id).set({
             statusText,
